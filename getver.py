@@ -28,4 +28,3 @@ class Getver:
         n=res.find('type')
         code=res[m+10:n-3]
         return code
-    
