@@ -7,6 +7,7 @@ from urllib import parse
 import os
 from getver1 import Getver
 import logging
+import time
 
 class Autoreply:
     result=None
@@ -241,12 +242,14 @@ if __name__ == "__main__":
             if auto.login1()=='賬號已開啟兩步驗證':
                 if auto.login2()=='已經順利登錄':
                     auto.debug('登录成功')
+                    print (time.strftime("  时间:%Y/%m/%d-%H:%M:%S"))
                     success = True
                     au=''
         else:
             if au=='賬號已開啟兩步驗證':
                 if auto.login2()=='已經順利登錄':
                     auto.debug('登录成功')
+                    print (time.strftime("  时间:%Y/%m/%d-%H:%M:%S"))
                     success = True
                     au=''
     m=auto.getnumber()
@@ -263,12 +266,14 @@ if __name__ == "__main__":
             au=auto.postreply()
             if au=='回复成功':
                 auto.debug('回复成功')
+                print (time.strftime("  时间:%Y/%m/%d-%H:%M:%S"))
                 n=n+1
                 auto.debug('休眠'+str(sleeptime)+'s...')
                 sleep(sleeptime)
                 auto.debug('休眠完成')
             elif au=='今日已达上限':
                 auto.debug('回复失败，今日次数已达10次')
+                print (time.strftime("  时间:%Y/%m/%d-%H:%M:%S"))
                 suc=True
             else:
                 auto.debug('1024限制！！！')
@@ -277,6 +282,7 @@ if __name__ == "__main__":
                 auto.debug('休眠完成')
         except:
             print('回复失败，重试')
+            print (time.strftime("  时间:%Y/%m/%d-%H:%M:%S"))
     n=auto.getnumber()
     auto.debug('开始时发表帖子:'+m)
     auto.debug('结束时发表帖子:'+n)
