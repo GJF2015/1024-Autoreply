@@ -242,6 +242,7 @@ if __name__ == "__main__":
             if auto.login1()=='賬號已開啟兩步驗證':
                 if auto.login2()=='已經順利登錄':
                     auto.debug('登录成功')
+                    auto.debug(datetime.datetime.utcnow() + datetime.timedelta(hours=8))
                     auto.debug(time.strftime("  时间:%Y/%m/%d-%H:%M:%S"))
                     success = True
                     au=''
@@ -249,6 +250,7 @@ if __name__ == "__main__":
             if au=='賬號已開啟兩步驗證':
                 if auto.login2()=='已經順利登錄':
                     auto.debug('登录成功')
+                    auto.debug(datetime.datetime.utcnow() + datetime.timedelta(hours=8))
                     auto.debug(time.strftime("  时间:%Y/%m/%d-%H:%M:%S"))
                     success = True
                     au=''
