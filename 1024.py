@@ -8,6 +8,7 @@ import os
 from getver1 import Getver
 import logging
 import time
+import datetime
 
 class Autoreply:
     result=None
