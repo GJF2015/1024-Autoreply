@@ -35,4 +35,3 @@ jobs:
         CODEPASS: ${{ secrets.CODEPASS }}
       run:
         python3 1024.py
-
