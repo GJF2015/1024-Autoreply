@@ -7,8 +7,6 @@ from urllib import parse
 import os
 from getver1 import Getver
 import logging
-import time
-import datetime
 
 class Autoreply:
     result=None
@@ -30,13 +28,13 @@ class Autoreply:
         'Proxy-Connection': 'keep-alive',
         'Referer': 'http://t66y.com/index.php',
         'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4209.2 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'
     }
     headers1={
         'Host': 't66y.com',
         'Proxy-Connection': 'keep-alive',
         'Referer': 'http://t66y.com/login.php',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4209.2 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'
     }
     headers2={
         'Host': 't66y.com',
@@ -44,11 +42,11 @@ class Autoreply:
         'Content-Type': 'application/x-www-form-urlencoded',
         'Proxy-Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4209.2 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'
         }
 
     def __init__(self,user,password,secret):
-        self.user= user.encode('gb2312')
+        self.user= user.encode('gb18030')
         self.password= password
         self.secret =secret
 
@@ -153,9 +151,9 @@ class Autoreply:
         get=requests.get(self.geturl,headers=self.headers,cookies=self.cookies)
         sleep(2)
         get=get.text.encode('iso-8859-1').decode('gbk')
-        pat='<h4>.*</h4>'
+        pat='<b>本頁主題:</b> .*</td>'
         res=re.search(pat,get)
-        res=res.group(0).replace('<h4>','').replace('</h4>','')
+        res=res.group(0).replace('<b>本頁主題:</b> ','').replace('</td>','')
         res='Re:'+res
         self.res=res
         #print(res)
@@ -165,7 +163,7 @@ class Autoreply:
         reply=['感谢分享','感谢你的分享','谢谢分享','多谢分享']
         reply_m=random.randint(0,3)
         reply_news=reply[reply_m]
-        self.reply_news=reply_news.encode('gb2312')
+        self.reply_news=reply_news.encode('gb18030')
         self.logger.debug("本次回复内容是:"+reply_news)
 
     #暂时没用，看以后了
@@ -265,6 +263,7 @@ if __name__ == "__main__":
             auto.getmatch()
             sleeptime=random.randint(1024,2048)
             au=auto.postreply()
+            print(au)
             if au=='回复成功':
                 auto.debug('回复成功')
                 auto.debug(datetime.datetime.utcnow() + datetime.timedelta(hours=8))
@@ -283,8 +282,8 @@ if __name__ == "__main__":
                 auto.debug('休眠完成')
         except:
             print('回复失败，重试')
-            print (time.strftime("  伦敦时间:%Y/%m/%d-%H:%M:%S"))
     n=auto.getnumber()
     auto.debug('开始时发表帖子:'+m)
     auto.debug('结束时发表帖子:'+n)
     auto.debug('回复'+str(int(n)-int(m))+'次')
+    auto.debug(datetime.datetime.utcnow() + datetime.timedelta(hours=8))
