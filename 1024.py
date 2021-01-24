@@ -7,6 +7,7 @@ from urllib import parse
 import os
 from getver1 import Getver
 import logging
+import datetime
 
 class Autoreply:
     result=None
