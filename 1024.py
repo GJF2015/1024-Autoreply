@@ -7,8 +7,6 @@ from urllib import parse
 import os
 from getver1 import Getver
 import logging
-import time
-import datetime
 
 class Autoreply:
     result=None
@@ -265,7 +263,6 @@ if __name__ == "__main__":
             auto.getmatch()
             sleeptime=random.randint(1024,2048)
             au=auto.postreply()
-            print(au)
             if au=='回复成功':
                 auto.debug('回复成功')
                 auto.debug(datetime.datetime.utcnow() + datetime.timedelta(hours=8))
@@ -287,5 +284,5 @@ if __name__ == "__main__":
     n=auto.getnumber()
     auto.debug('开始时发表帖子:'+m)
     auto.debug('结束时发表帖子:'+n)
-    auto.debug('回复'+str(int(n)-int(m))+'次')
     auto.debug(datetime.datetime.utcnow() + datetime.timedelta(hours=8))
+    auto.debug('回复'+str(int(n)-int(m))+'次')
