@@ -2,9 +2,9 @@ name: 1024-AutoReply
 
 on:
   workflow_dispatch: # 手动触发
-  push:
-    branches:
-      - master
+#  push:
+#    branches:
+#      - master
   schedule:
     - cron: '0 16 * * *'
 
