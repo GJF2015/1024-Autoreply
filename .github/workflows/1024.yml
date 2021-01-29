@@ -6,7 +6,7 @@ on:
 #    branches:
 #      - master
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '0 16 * * *' #凌晨00:00执行
 
 
 jobs:
