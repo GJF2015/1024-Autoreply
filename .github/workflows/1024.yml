@@ -2,12 +2,11 @@ name: 1024-AutoReply
 
 on:
   workflow_dispatch: # 手动触发
-#  push:
+#  push: 取消Push的方式触发工作流，方便多次提交修改代码后统一调试
 #    branches:
 #      - master
   schedule:
     - cron: '0 16 * * *' #凌晨00:00执行
-
 
 jobs:
   build:
@@ -17,9 +16,7 @@ jobs:
     - name: 准备脚本运行环境
       run : |
         sudo apt-get update
-        sudo apt-get -y install git
-        sudo apt-get -y install python3-pip
-        sudo apt-get -y install python3-setuptools
+        sudo apt-get -y install git python3-pip python3-setuptools 
         pip3 install requests onetimepass pillow
 
     - name: 开始1024自动回复
