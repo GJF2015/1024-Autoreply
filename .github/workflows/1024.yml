@@ -6,7 +6,7 @@ on:
 #    branches:
 #      - master
   schedule:
-    - cron: '46 23 * * *' #凌晨07:23执行
+    - cron: '21 4,10,22 * * *' #北京时间06:23、12:23、18:23执行
 
 jobs:
   build:
